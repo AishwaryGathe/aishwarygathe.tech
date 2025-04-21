@@ -1,0 +1,475 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Google Logo Colors for reference:
+   Blue: #4285F4
+   Red: #EA4335
+   Yellow: #FBBC05
+   Green: #34A853
+*/
+
+/* CSS Variables for Theme Switching */
+:root {
+    --bg-main: #f5f5f5;
+    --bg-section: #fff;
+    --text-main: #333;
+    --text-muted: #777;
+    --border-color: #ddd;
+    --bg-skill: #f9f9f9;
+    --input-bg: #f9f9f9;
+    --header-bg: #fff;
+    --form-shadow: rgba(0, 0, 0, 0.05);
+    --nav-active: #eee;
+}
+
+/* Dark Mode Variables */
+.dark-mode {
+    --bg-main: #121212;
+    --bg-section: #1e1e1e;
+    --text-main: #e0e0e0;
+    --text-muted: #aaa;
+    --border-color: #333;
+    --bg-skill: #2a2a2a;
+    --input-bg: #2a2a2a;
+    --header-bg: #1a1a1a;
+    --form-shadow: rgba(0, 0, 0, 0.3);
+    --nav-active: #2a2a2a;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Courier New", monospace;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    line-height: 1.6;
+    padding: 0;
+    margin: 0;
+    transition: background-color 0.3s ease;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Typography - Calculator/LCD Style */
+h1, h2, h3, h4 {
+    font-family: "Courier New", monospace;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    color: var(--text-main);
+}
+
+h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    padding: 20px 0;
+    border-bottom: 2px solid #4285F4; /* Google Blue */
+}
+
+h2 {
+    font-size: 1.8rem;
+    border-left: 4px solid #EA4335; /* Google Red */
+    padding-left: 10px;
+}
+
+h3 {
+    color: #34A853; /* Google Green - keeping this color consistent in both themes */
+}
+
+p {
+    margin-bottom: 15px;
+}
+
+/* Header and Navigation */
+header {
+    background-color: var(--header-bg);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+}
+
+.header-controls {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+nav {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: var(--text-main);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 15px;
+    margin: 0 5px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+nav a:hover {
+    border-bottom: 2px solid #FBBC05; /* Google Yellow */
+    color: #4285F4; /* Google Blue */
+}
+
+/* Hamburger menu for mobile */
+.nav-toggle {
+    display: none;
+}
+
+.nav-toggle-label {
+    display: none;
+    cursor: pointer;
+}
+
+.nav-toggle-label span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-main);
+    margin: 5px 0;
+    transition: all 0.3s ease;
+}
+
+/* Theme Switch Styles */
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.theme-switch {
+    display: inline-block;
+    position: relative;
+    height: 26px;
+    width: 50px;
+}
+
+.theme-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #2a2a2a;
+    transition: .4s;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 4px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    z-index: 2;
+}
+
+input:checked + .slider {
+    background-color: #aaa;
+}
+
+input:checked + .slider:before {
+    transform: translateX(22px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.theme-label {
+    margin-left: 10px;
+    font-size: 0.8rem;
+    color: var(--text-main);
+}
+
+.sun {
+    font-size: 12px;
+    margin-right: 2px;
+}
+
+.moon {
+    font-size: 12px;
+    margin-left: 2px;
+}
+
+/* Main Content */
+main {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+/* Sections */
+section {
+    margin-bottom: 40px;
+    padding: 40px;
+    background-color: var(--bg-section);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    box-shadow: 0 2px 10px var(--form-shadow);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+section:target {
+    border-left: 4px solid #4285F4; /* Google Blue */
+}
+
+/* Projects */
+.project {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px dashed #4285F4; /* Google Blue */
+}
+
+.project:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.project h3 {
+    text-decoration: underline;
+    text-decoration-color: #FBBC05; /* Google Yellow */
+}
+
+.date {
+    font-style: italic;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+}
+
+/* Skills */
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: flex-start;
+}
+
+.skill {
+    background-color: var(--bg-skill);
+    padding: 8px 15px;
+    border-radius: 3px;
+    border-left: 3px solid #34A853; /* Google Green */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.skill:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Contact Form */
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-color);
+    border-bottom: 2px solid #4285F4; /* Google Blue */
+    border-radius: 3px;
+    color: var(--text-main);
+    font-family: "Courier New", monospace;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: #FBBC05; /* Google Yellow */
+    box-shadow: 0 0 0 2px rgba(251, 188, 5, 0.2);
+}
+
+button {
+    padding: 12px 20px;
+    background-color: #EA4335; /* Google Red */
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-family: "Courier New", monospace;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: background-color 0.3s ease;
+    align-self: flex-start;
+}
+
+button:hover {
+    background-color: #FBBC05; /* Google Yellow */
+}
+
+.contact-info {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #34A853; /* Google Green */
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 30px 20px;
+    background-color: var(--bg-section);
+    border-top: 2px solid #4285F4; /* Google Blue */
+    margin-top: 60px;
+    transition: background-color 0.3s ease;
+}
+
+/* Retro Terminal Effect */
+.terminal-cursor {
+    display: inline-block;
+    width: 10px;
+    height: 18px;
+    background-color: #EA4335; /* Google Red */
+    animation: blink 1s step-end infinite;
+    vertical-align: text-bottom;
+    margin-left: 5px;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+    
+    section {
+        padding: 30px 20px;
+    }
+    
+    /* Hamburger menu display */
+    .nav-toggle-label {
+        display: block;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
+    
+    nav ul {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        left: 0;
+        background: var(--header-bg);
+        height: 0;
+        overflow: hidden;
+        flex-direction: column;
+        align-items: center;
+        transition: height 0.3s ease, background-color 0.3s ease;
+        box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .nav-toggle:checked ~ ul {
+        height: auto;
+        padding: 20px 0;
+    }
+    
+    nav li {
+        width: 100%;
+        text-align: center;
+    }
+    
+    nav a {
+        display: block;
+        padding: 15px;
+        border-bottom: 1px solid var(--border-color);
+    }
+    
+    .skills-container {
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    h2 {
+        font-size: 1.3rem;
+    }
+    
+    h3 {
+        font-size: 1.1rem;
+    }
+    
+    section {
+        padding: 20px 15px;
+    }
+    
+    .skill {
+        width: 100%;
+        text-align: center;
+    }
+    
+    button {
+        width: 100%;
+    }
+    
+    .theme-label {
+        display: none;
+    }
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" class="dark-mode">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You | My Portfolio</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        /* Variables for theme switching */
+        :root {
+            --bg-main: #f5f5f5;
+            --bg-section: #fff;
+            --text-main: #333;
+            --border-color: #ddd;
+            --form-shadow: rgba(0, 0, 0, 0.05);
+        }
+
+        /* Dark Mode Variables */
+        .dark-mode {
+            --bg-main: #121212;
+            --bg-section: #1e1e1e;
+            --text-main: #e0e0e0;
+            --border-color: #333;
+            --form-shadow: rgba(0, 0, 0, 0.3);
+        }
+        
+        body {
+            font-family: "Courier New", monospace;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            transition: background-color 0.3s ease;
+        }
+        
+        .thank-you-container {
+            text-align: center;
+            max-width: 600px;
+            margin: 100px auto;
+            padding: 40px;
+            background-color: var(--bg-section);
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            box-shadow: 0 2px 10px var(--form-shadow);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        
+        .thank-you-container h1 {
+            color: #34A853; /* Google Green */
+            border-bottom: none;
+        }
+        
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4285F4; /* Google Blue */
+            color: white;
+            text-decoration: none;
+            border-radius: 3px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .back-button:hover {
+            background-color: #FBBC05; /* Google Yellow */
+        }
+    </style>
+</head>
+<body>
+    <div class="thank-you-container">
+        <h1>THANK YOU!</h1>
+        <p>Your message has been sent successfully. I'll get back to you as soon as possible.</p>
+        <a href="/index.html" class="back-button">RETURN TO PORTFOLIO</a>
+    </div>
+    
+    <script>
+        // Check for saved theme preference
+        if (localStorage.getItem('theme') === 'light') {
+            document.documentElement.classList.remove('dark-mode');
+        }
+    </script>
+</body>
+</html>
